@@ -2,7 +2,7 @@
 
 <%= render 'form', paper: @paper %>
 
-<%= form_with(scope: "paper") do |form| %>
+<%= form_with model: @paper, local: true do |form| %>
   <%= form.select :author_ids,
   options_from_collection_for_select(Author.all, :id, :name, @paper.author_ids),
   {},
