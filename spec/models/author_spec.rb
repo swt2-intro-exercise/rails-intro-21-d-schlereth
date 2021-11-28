@@ -18,4 +18,9 @@ RSpec.describe Author, type: :model do
   it "should have the correct homepage" do
     expect(author.homepage).to eq("http://wikipedia.org/Alan_Turing")
   end
+
+  it "should not be valid without last name" do
+    invalid_author = Author.new(first_name: "Alan", homepage: "http://wikipedia.org/Alan_Turing")
+    expect(invalid_author).to_not be_valid
+  end
 end
