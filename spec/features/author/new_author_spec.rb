@@ -12,4 +12,17 @@ describe "New author page", type: :feature do
     expect(page).to have_field('author[last_name]')
     expect(page).to have_field('author[homepage]')
   end
+
+  describe "adding an author without last name" do
+    before do
+      visit new_author_path
+      pp(page)
+      fill_in 'author[first_name]', with: 'Alan'
+      fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
+      click_button("Save Author")
+    end
+    it "should display an error message" do
+      expect(page).to have_text('error')
+    end
+  end
 end
