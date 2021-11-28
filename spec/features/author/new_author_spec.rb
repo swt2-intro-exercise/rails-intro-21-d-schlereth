@@ -16,7 +16,6 @@ describe "New author page", type: :feature do
   describe "adding an author without last name" do
     before do
       visit new_author_path
-      pp(page)
       fill_in 'author[first_name]', with: 'Alan'
       fill_in 'author[homepage]', with: 'http://wikipedia.org/Alan_Turing'
       click_button("Save Author")
